@@ -1,0 +1,14 @@
+main: fr.crabii.homes.Main
+name: Homes
+version: 1.1
+author: Crabii
+commands:
+  sethome:
+    description: Permet de créer un home
+    permission: homes.sethome
+  delhome:
+    description: Permet de supprimer un home
+    permission: homes.delhome
+  home:
+    description: Permet de se téléporter à un home
+    permission: homes.home
