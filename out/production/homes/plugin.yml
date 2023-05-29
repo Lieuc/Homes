@@ -2,6 +2,7 @@ main: fr.crabii.homes.Main
 name: Homes
 version: 1.1
 author: Crabii
+
 commands:
   sethome:
     description: Permet de créer un home

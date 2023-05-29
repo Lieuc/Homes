@@ -19,7 +19,7 @@ public class CommandHome implements CommandExecutor, TabCompleter {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (args.length < 1) {
-                if (Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").size() == 0) {
+                if (Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist") == null || Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").size() == 0) {
                     player.sendMessage("§eListe des homes: §cAuccun");
                     return false;
                 } else {
@@ -68,7 +68,7 @@ public class CommandHome implements CommandExecutor, TabCompleter {
 
         List<String> result = new ArrayList<>();
 
-        if (args.length == 1) {
+        if (arguments.size() != 0 && args.length == 1) {
             for (String str : arguments) {
                 if (str.toLowerCase().startsWith(args[0].toLowerCase())) {
                     result.add(str);

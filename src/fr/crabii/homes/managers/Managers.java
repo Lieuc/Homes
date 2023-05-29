@@ -5,10 +5,8 @@ import fr.crabii.homes.commands.EventsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Managers {
 
@@ -44,13 +42,14 @@ public class Managers {
         return managers;
     }
     public void registerNewPlayer(Collection<Player> a) {
+        String [] tb = new String[0];
         for (Player pls : players) {
             if (!playersuuid.contains(String.valueOf(pls.getUniqueId()))) {
                 Managers.getManagers().playersuuid.add(String.valueOf(pls.getUniqueId()));
 
                 String u = String.valueOf(pls.getUniqueId());
                 Managers.getManagers().data.getConfig().set("players." + u, "");
-                Managers.getManagers().data.getConfig().set("players." + u + ".homeslist", "");
+                Managers.getManagers().data.getConfig().set("players." + u + ".homeslist", tb);
                 Managers.getManagers().data.saveConfig();
             }
 
