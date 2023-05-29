@@ -46,7 +46,7 @@ public class CommandSethome implements CommandExecutor {
                         return false;
                     }
                 } else {
-                    player.sendMessage("Vous avez atteint la quantité maximal de home");
+                    player.sendMessage("Vous ne pouvez plus faire de home !");
                     return false;
                 }
 
