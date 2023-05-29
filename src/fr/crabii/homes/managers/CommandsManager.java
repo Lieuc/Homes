@@ -1,10 +1,7 @@
 package fr.crabii.homes.managers;
 
 import fr.crabii.homes.Main;
-import fr.crabii.homes.commands.CommandDelhome;
-import fr.crabii.homes.commands.CommandGethome;
-import fr.crabii.homes.commands.CommandHome;
-import fr.crabii.homes.commands.CommandSethome;
+import fr.crabii.homes.commands.*;
 
 
 public class CommandsManager {
@@ -13,6 +10,9 @@ public class CommandsManager {
         instance.getCommand("delhome").setExecutor(new CommandDelhome());
         instance.getCommand("gethome").setExecutor(new CommandGethome());
         instance.getCommand("home").setExecutor(new CommandHome());
+        instance.getCommand("gohome").setExecutor(new CommandGohome());
+
+
         instance.getCommand("home").setTabCompleter(new CommandHome());
     }
 

@@ -1,6 +1,6 @@
 main: fr.crabii.homes.Main
 name: Homes
-version: 1.2
+version: 1.3
 author: Crabii
 
 commands:
@@ -16,3 +16,6 @@ commands:
   gethome:
     description: Permet de récupérer la liste des homes d'un joueur
     permission: home.gethome
+  gohome:
+    description: Permet de ce teleporter au home d'un autre joueur
+    permission: home.gohome
