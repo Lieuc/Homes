@@ -20,6 +20,10 @@ public class CommandSethome implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        String prefix = ConfigBuilder.getString("prefix");
+
+
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
@@ -32,28 +36,28 @@ public class CommandSethome implements CommandExecutor {
 
             // Vérification et création du home
             if (args.length < 1 || args.length > 1) {
-                player.sendMessage(ConfigBuilder.getString("prefix") + "§c- /sethome <nom du home>");
+                player.sendMessage("§c- /sethome <nom du home>");
                 return false;
             } else {
                 if (homes.size() < ConfigBuilder.getInt("maxhomes")) {
                     if (homes.contains(args[0])) {
-                        player.sendMessage(ConfigBuilder.getString("prefix") + "§cCe home existe déja");
+                        player.sendMessage(prefix + "§cCe home existe déja");
                         return false;
                     } else {
                         homes.add(args[0]);
                         setHome(player.getLocation(), args[0], player.getUniqueId());
-                        player.sendMessage(ConfigBuilder.getString("prefix") + "§eVous avez créé le home §b" + args[0]);
+                        player.sendMessage("§eVous avez créé le home §b" + args[0]);
                         return false;
                     }
                 } else {
-                    player.sendMessage("Vous ne pouvez plus faire de home !");
+                    player.sendMessage(prefix + "Vous ne pouvez plus faire de home !");
                     return false;
                 }
 
 
             }
         } else {
-            sender.sendMessage(ConfigBuilder.getString("prefix") + "§cVous devez être un joueur pour executer cette commande");
+            sender.sendMessage(prefix + "§cVous devez être un joueur pour executer cette commande");
             return false;
         }
 

@@ -14,6 +14,7 @@ import java.util.List;
 public class CommandDelhome implements CommandExecutor, TabCompleter {
 
     private List<String> homes;
+    String prefix = ConfigBuilder.getString("prefix");
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -37,15 +38,15 @@ public class CommandDelhome implements CommandExecutor, TabCompleter {
                     Managers.getManagers().data.getConfig().set("players." + player.getUniqueId() + "." + args[0], null);
                     Managers.getManagers().data.getConfig().set("players." + player.getUniqueId() + ".homeslist" , homes);
                     Managers.getManagers().data.saveConfig();
-                    player.sendMessage(ConfigBuilder.getString("prefix") + "§eVous avez suprimé le home §b" + args[0]);
+                    player.sendMessage(prefix + "§eVous avez suprimé le home §b" + args[0]);
                     return false;
                 } else {
-                    player.sendMessage(ConfigBuilder.getString("prefix") + "§cCe home n'existe pas");
+                    player.sendMessage(prefix + "§cCe home n'existe pas");
                     return false;
                 }
             }
         } else {
-            sender.sendMessage("§cVous decvez etre un joueur pour executer cette commande !");
+            sender.sendMessage(prefix + "§cVous decvez etre un joueur pour executer cette commande !");
             return false;
         }
 

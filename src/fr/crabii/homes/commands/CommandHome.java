@@ -15,6 +15,9 @@ public class CommandHome implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
+        String prefix =ConfigBuilder.getString("prefix");
+
+
         // Vérification et execution de la fonction pour ce téléporter à un home
         if (sender instanceof Player) {
             Player player = (Player) sender;
@@ -32,10 +35,10 @@ public class CommandHome implements CommandExecutor, TabCompleter {
             } else {
                 if (Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").contains(args[0])) {
                     homeTp(args[0], player);
-                    player.sendMessage(ConfigBuilder.getString("prefix") + "§eTéléportation au home: §b" + args[0]);
+                    player.sendMessage(prefix + "§eTéléportation au home: §b" + args[0]);
                     return false;
                 } else {
-                    player.sendMessage(ConfigBuilder.getString("prefix") + "§cCe home n'existe pas");
+                    player.sendMessage(prefix + "§cCe home n'existe pas");
                     return false;
                 }
             }

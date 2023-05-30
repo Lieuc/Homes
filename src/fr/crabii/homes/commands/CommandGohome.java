@@ -11,21 +11,23 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandGohome implements CommandExecutor {
+
+    String prefix = ConfigBuilder.getString("prefix");
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (args.length < 1 || args.length > 2) {
-                player.sendMessage(ChatColor.RED + "syntaxe: [<player>] [<home>]");
+                player.sendMessage(prefix + ChatColor.RED + "syntaxe: [<player>] [<home>]");
                 return false;
             } else {
                 Player target = Bukkit.getPlayer(args[0]);
                 if (!Managers.getManagers().data.getConfig().getList("players." + target.getUniqueId() + ".homeslist").toString().contains(args[1])) {
-                    player.sendMessage(ChatColor.RED + "Erreur:" + ChatColor.YELLOW + "Ce home n'existe pas");
+                    player.sendMessage(prefix + ChatColor.RED + "Erreur:" + ChatColor.YELLOW + "Ce home n'existe pas");
                     return false;
                 } else {
                     otherhomeTp(args[1], player);
-                    player.sendMessage(ConfigBuilder.getString("prefix") + ChatColor.YELLOW + "Téléportation au home " + ChatColor.BLUE + args[1]);
+                    player.sendMessage(prefix + ChatColor.YELLOW + "Téléportation au home " + ChatColor.BLUE + args[1]);
                 }
             }
         }
