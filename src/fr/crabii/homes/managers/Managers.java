@@ -5,7 +5,6 @@ import fr.crabii.homes.commands.EventsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Managers {

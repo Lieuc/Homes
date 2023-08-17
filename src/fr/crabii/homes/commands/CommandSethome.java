@@ -16,6 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class CommandSethome implements CommandExecutor {
 
+
     private List<String> homes;
 
     @Override
@@ -39,19 +40,38 @@ public class CommandSethome implements CommandExecutor {
                 player.sendMessage("§c- /sethome <nom du home>");
                 return false;
             } else {
-                if (homes.size() < ConfigBuilder.getInt("maxhomes")) {
-                    if (homes.contains(args[0])) {
-                        player.sendMessage(prefix + "§cCe home existe déja");
-                        return false;
+                if(!player.hasPermission("homes.morehome") || !player.hasPermission("homes.unlimited")) {
+                    if (homes.size() < ConfigBuilder.getInt("maxhomes")) {
+                        if (homes.contains(args[0])) {
+                            player.sendMessage(prefix + "§cCe home existe déja");
+                            return false;
+                        } else {
+                            homes.add(args[0]);
+                            setHome(player.getLocation(), args[0], player.getUniqueId());
+                            player.sendMessage("§eVous avez créé le home §b" + args[0]);
+                            return false;
+                        }
                     } else {
+                        player.sendMessage(prefix + "Vous ne pouvez plus faire de home !");
+                        return false;
+
+
+                    }
+                } else {
+                    if (player.hasPermission("homes.unlimited")) {
                         homes.add(args[0]);
                         setHome(player.getLocation(), args[0], player.getUniqueId());
                         player.sendMessage("§eVous avez créé le home §b" + args[0]);
                         return false;
+                    } else if(homes.size() < ConfigBuilder.getInt("morehome")) {
+                        homes.add(args[0]);
+                        setHome(player.getLocation(), args[0], player.getUniqueId());
+                        player.sendMessage("§eVous avez créé le home §b" + args[0]);
+                        return false;
+                    } else {
+                        player.sendMessage(prefix + "Vous ne pouvez plus faire de home !");
+                        return false;
                     }
-                } else {
-                    player.sendMessage(prefix + "Vous ne pouvez plus faire de home !");
-                    return false;
                 }
 
 
