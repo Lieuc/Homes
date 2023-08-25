@@ -30,7 +30,7 @@ public class CommandHome implements CommandExecutor, TabCompleter {
                     return false;
                 }
             } else if (args.length > 1) {
-                player.sendMessage("§c- ?/home <nom du home>");
+                player.sendMessage("§c- /home <nom du home>");
                 return false;
             } else {
                 if (Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").contains(args[0])) {

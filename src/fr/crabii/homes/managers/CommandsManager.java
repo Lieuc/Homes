@@ -11,6 +11,7 @@ public class CommandsManager {
         instance.getCommand("gethome").setExecutor(new CommandGethome());
         instance.getCommand("home").setExecutor(new CommandHome());
         instance.getCommand("gohome").setExecutor(new CommandGohome());
+        instance.getCommand("homegui").setExecutor(new CommandHomeGui());
 
 
         instance.getCommand("home").setTabCompleter(new CommandHome());

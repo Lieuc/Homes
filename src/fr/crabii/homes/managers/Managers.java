@@ -1,7 +1,6 @@
 package fr.crabii.homes.managers;
 
 import fr.crabii.homes.Main;
-import fr.crabii.homes.commands.EventsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -14,6 +13,7 @@ public class Managers {
     public List<String> playersuuid;
     public DataManager data;
     private Collection<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
+    public HashMap<UUID, Integer> homesPI = new HashMap<>();
 
 
     public void load(Main instance) {
