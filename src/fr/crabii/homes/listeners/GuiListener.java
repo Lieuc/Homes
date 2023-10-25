@@ -64,12 +64,11 @@ public class GuiListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
-        e.setCancelled(true);
         Player player = (Player) e.getWhoClicked();
         homes = (List<String>) Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist");
         Inventory inv = e.getInventory();
         if (e.getView().getTitle().equalsIgnoreCase(ChatColor.YELLOW + "Homes")) {
-
+            e.setCancelled(true);
             if (e.getCurrentItem() != null) {
                 if (e.getCurrentItem().getType() == Material.GREEN_STAINED_GLASS_PANE && homesPlayerIndex.get(player.getUniqueId()) < homes.size()) {
                     inv.clear();

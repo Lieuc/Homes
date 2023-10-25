@@ -1,6 +1,7 @@
 package fr.crabii.homes.managers;
 
 import fr.crabii.homes.Main;
+import fr.crabii.homes.tools.ConfigBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -12,8 +13,8 @@ public class Managers {
     private static Managers managers;
     public List<String> playersuuid;
     public DataManager data;
+    public List<String> blacklist = new ArrayList<>();
     private Collection<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
-    public HashMap<UUID, Integer> homesPI = new HashMap<>();
 
 
     public void load(Main instance) {
@@ -30,6 +31,8 @@ public class Managers {
         playersuuid = (List<String>) data.getConfig().getList("uuidplayers");
         Bukkit.getConsoleSender().sendMessage(players.toString());
         registerNewPlayer(players);
+
+        blacklist = ConfigBuilder.getList("blacklist");
 
     }
 

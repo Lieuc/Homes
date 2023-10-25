@@ -15,7 +15,7 @@ public class CommandHome implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        String prefix =ConfigBuilder.getString("prefix");
+        String prefix = ConfigBuilder.getString("prefix");
 
 
         // Vérification et execution de la fonction pour ce téléporter à un home
@@ -24,23 +24,17 @@ public class CommandHome implements CommandExecutor, TabCompleter {
             if (args.length < 1) {
                 if (Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist") == null || Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").size() == 0) {
                     player.sendMessage("§eListe des homes: §cAuccun");
-                    return false;
                 } else {
                     player.sendMessage("§eListe de homes: §b" + Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").toString().replace("[", "").replace("]", ""));
-                    return false;
                 }
-            } else if (args.length > 1) {
-                player.sendMessage("§c- /home <nom du home>");
                 return false;
+            }
+
+            if (Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").contains(args[0])) {
+                homeTp(args[0], player);
+                player.sendMessage(prefix + "§eTéléportation au home: §b" + args[0]);
             } else {
-                if (Managers.getManagers().data.getConfig().getList("players." + player.getUniqueId() + ".homeslist").contains(args[0])) {
-                    homeTp(args[0], player);
-                    player.sendMessage(prefix + "§eTéléportation au home: §b" + args[0]);
-                    return false;
-                } else {
-                    player.sendMessage(prefix + "§cCe home n'existe pas");
-                    return false;
-                }
+                player.sendMessage(prefix + "§cCe home n'existe pas");
             }
         }
         return false;

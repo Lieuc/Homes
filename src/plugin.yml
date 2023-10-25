@@ -23,3 +23,9 @@ commands:
   homegui:
     description: GUI qui affiche la liste des homes
     permission: homes.homegui
+  blacklist:
+    description: Permet de blacklister des monde pour les commande du plugin home
+    permission: homes.blacklist
+  unblacklist:
+    description: Permet de retirer un monde la blacklist
+    permission: homes.blacklist

@@ -1,6 +1,7 @@
 package fr.crabii.homes.managers;
 
 import fr.crabii.homes.Main;
+import fr.crabii.homes.listeners.BlackListListener;
 import fr.crabii.homes.listeners.GuiListener;
 import fr.crabii.homes.listeners.PlayerJoin;
 import org.bukkit.Bukkit;
@@ -12,5 +13,6 @@ public class EventsManager {
 
         pm.registerEvents(new PlayerJoin(), instance);
         pm.registerEvents(new GuiListener(), instance);
+        pm.registerEvents(new BlackListListener(), instance);
     }
 }
